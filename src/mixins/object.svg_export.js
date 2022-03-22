@@ -195,6 +195,19 @@
      * @private
      */
     _createBaseSVGMarkup: function(objectMarkup, options) {
+
+      if (this.qrCode) {
+        let markup = []
+        markup.push(
+          '<g ',
+          'transform="translate(' + this.left + ',' + this.top + ')" ',
+          ' >\n',
+          this.qrCode+ '\n',
+          '</g>\n',
+        );
+        return markup.join('');
+      }
+
       options = options || {};
       var noStyle = options.noStyle,
           reviver = options.reviver,
@@ -219,9 +232,17 @@
           '<g ', shadowInfo, this.getSvgCommons(), ' >\n'
         );
       }
+
+      let svgTransform = this.getSvgTransform(false)
+      if ( this.textAnchor ) {
+        let transform = this.calcOwnMatrix()
+        transform[4] = 0
+        svgTransform = 'transform="' + fabric.util.matrixToSVG(transform) + '" ';
+      }
+
       markup.push(
         '<g ',
-        this.getSvgTransform(false),
+        svgTransform,
         !absoluteClipPath ? shadowInfo + this.getSvgCommons() : '',
         ' >\n'
       );

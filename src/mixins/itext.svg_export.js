@@ -48,6 +48,7 @@
       return [
         textAndBg.textBgRects.join(''),
         '\t\t<text xml:space="preserve" ',
+        (this.textAnchor) ? `text-anchor="${this.textAnchor}" `: '',
         (this.fontFamily ? 'font-family="' + this.fontFamily.replace(/"/g, '\'') + '" ' : ''),
         (this.fontSize ? 'font-size="' + this.fontSize + '" ' : ''),
         (this.fontStyle ? 'font-style="' + this.fontStyle + '" ' : ''),
@@ -146,7 +147,17 @@
         }
         if (timeToRender) {
           style = this._getStyleDeclaration(lineIndex, i) || { };
-          textSpans.push(this._createTextCharSpan(charsToRender, style, textLeftOffset, textTopOffset));
+          if (this.textAnchor) {
+            if (this.textAnchor === 'start') {
+              textSpans.push(this._createTextCharSpan(charsToRender, style, this.left, textTopOffset));
+            } else if (this.textAnchor === 'middle') {
+              textSpans.push(this._createTextCharSpan(charsToRender, style, this.left + (this.width / 2), textTopOffset));
+            } else if (this.textAnchor === 'end') {
+              textSpans.push(this._createTextCharSpan(charsToRender, style, this.left + this.width, textTopOffset));
+            }
+          } else {
+            textSpans.push(this._createTextCharSpan(charsToRender, style, textLeftOffset, textTopOffset));
+          }
           charsToRender = '';
           actualStyle = nextStyle;
           textLeftOffset += boxWidth;
