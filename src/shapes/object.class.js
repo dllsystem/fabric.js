@@ -51,6 +51,8 @@
    * @fires drop
    */
   fabric.Object = fabric.util.createClass(fabric.CommonMethods, /** @lends fabric.Object.prototype */ {
+    textAnchor:               null,
+    qrCode:                   null,
 
     /**
      * Type of an object (rect, circle, path, etc.).
@@ -837,6 +839,8 @@
       var NUM_FRACTION_DIGITS = fabric.Object.NUM_FRACTION_DIGITS,
 
           object = {
+            textAnchor:               this.textAnchor,
+            qrCode:                   this.qrCode,
             type:                     this.type,
             version:                  fabric.version,
             originX:                  this.originX,
