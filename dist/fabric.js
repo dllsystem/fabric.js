@@ -19413,12 +19413,13 @@ fabric.util.object.extend(fabric.Object.prototype, /** @lends fabric.Object.prot
     _createBaseSVGMarkup: function(objectMarkup, options) {
 
       if (this.qrCode) {
-        let markup = []
+        const qrcodeTransform = this.calcOwnMatrix();
+        let markup = [];
         markup.push(
           '<g ',
           'transform="translate(' + this.left + ',' + this.top + ')" ',
-          'data-width="' + this.width + '" ',
-          'data-height="' + this.height + '" ',
+          'data-width="' + this.width * qrcodeTransform[3] + '" ',
+          'data-height="' + this.height * qrcodeTransform[4] + '" ',
           ' >\n',
           this.qrCode+ '\n',
           '</g>\n',
