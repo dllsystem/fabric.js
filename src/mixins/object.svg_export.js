@@ -202,8 +202,8 @@
         markup.push(
           '<g ',
           'transform="translate(' + this.left + ',' + this.top + ')" ',
-          'data-width="' + this.width * qrcodeTransform[3] + '" ',
-          'data-height="' + this.height * qrcodeTransform[4] + '" ',
+          'data-width="' + this.width * qrcodeTransform[0] + '" ',
+          'data-height="' + this.height * qrcodeTransform[3] + '" ',
           ' >\n',
           this.qrCode+ '\n',
           '</g>\n',
