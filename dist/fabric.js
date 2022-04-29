@@ -19418,8 +19418,9 @@ fabric.util.object.extend(fabric.Object.prototype, /** @lends fabric.Object.prot
         markup.push(
           '<g ',
           'transform="translate(' + this.left + ',' + this.top + ')" ',
-          'data-width="' + this.width * qrcodeTransform[0] + '" ',
-          'data-height="' + this.height * qrcodeTransform[3] + '" ',
+          'qrcode-width="' + this.width * qrcodeTransform[0] + '" ',
+          'qrcode-height="' + this.height * qrcodeTransform[3] + '" ',
+          'qrcode-content="' + this.qrCodeContent ? this.qrCodeContent : '' + '" ',
           ' >\n',
           this.qrCode+ '\n',
           '</g>\n',
