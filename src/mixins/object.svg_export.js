@@ -196,7 +196,7 @@
      */
     _createBaseSVGMarkup: function(objectMarkup, options) {
 
-      if (this.qrCode) {
+      if (this.qrcode) {
         const qrcodeTransform = this.calcOwnMatrix();
         let markup = [];
         markup.push(
@@ -204,9 +204,9 @@
           'transform="translate(' + this.left + ',' + this.top + ')" ',
           'qrcode-width="' + this.width * qrcodeTransform[0] + '" ',
           'qrcode-height="' + this.height * qrcodeTransform[3] + '" ',
-          'qrcode-content="' + this.qrCodeContent ? this.qrCodeContent : '' + '" ',
+          'qrcode-variable="' + this.qrcodeVariable ? this.qrcodeVariable : '' + '" ',
           ' >\n',
-          this.qrCode+ '\n',
+          '[qrcode-body]' + '\n',
           '</g>\n',
         );
         return markup.join('');

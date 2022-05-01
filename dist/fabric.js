@@ -16240,7 +16240,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
    */
   fabric.Object = fabric.util.createClass(fabric.CommonMethods, /** @lends fabric.Object.prototype */ {
     textAnchor:               null,
-    qrCode:                   null,
+    qrcode:                   null,
 
     /**
      * Type of an object (rect, circle, path, etc.).
@@ -17028,7 +17028,8 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
 
           object = {
             textAnchor:               this.textAnchor,
-            qrCode:                   this.qrCode,
+            qrcode:                   this.qrcode,
+            qrcodeVariable:           this.qrcodeVariable,
             type:                     this.type,
             version:                  fabric.version,
             originX:                  this.originX,
@@ -19412,7 +19413,7 @@ fabric.util.object.extend(fabric.Object.prototype, /** @lends fabric.Object.prot
      */
     _createBaseSVGMarkup: function(objectMarkup, options) {
 
-      if (this.qrCode) {
+      if (this.qrcode) {
         const qrcodeTransform = this.calcOwnMatrix();
         let markup = [];
         markup.push(
@@ -19420,9 +19421,9 @@ fabric.util.object.extend(fabric.Object.prototype, /** @lends fabric.Object.prot
           'transform="translate(' + this.left + ',' + this.top + ')" ',
           'qrcode-width="' + this.width * qrcodeTransform[0] + '" ',
           'qrcode-height="' + this.height * qrcodeTransform[3] + '" ',
-          'qrcode-content="' + this.qrCodeContent ? this.qrCodeContent : '' + '" ',
+          'qrcode-variable="' + this.qrcodeVariable ? this.qrcodeVariable : '' + '" ',
           ' >\n',
-          this.qrCode+ '\n',
+          '[qrcode-body]' + '\n',
           '</g>\n',
         );
         return markup.join('');

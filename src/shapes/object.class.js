@@ -52,7 +52,7 @@
    */
   fabric.Object = fabric.util.createClass(fabric.CommonMethods, /** @lends fabric.Object.prototype */ {
     textAnchor:               null,
-    qrCode:                   null,
+    qrcode:                   null,
 
     /**
      * Type of an object (rect, circle, path, etc.).
@@ -840,7 +840,8 @@
 
           object = {
             textAnchor:               this.textAnchor,
-            qrCode:                   this.qrCode,
+            qrcode:                   this.qrcode,
+            qrcodeVariable:           this.qrcodeVariable,
             type:                     this.type,
             version:                  fabric.version,
             originX:                  this.originX,
