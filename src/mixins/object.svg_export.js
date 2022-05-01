@@ -204,7 +204,7 @@
           'transform="translate(' + this.left + ',' + this.top + ')" ',
           'qrcode-width="' + this.width * qrcodeTransform[0] + '" ',
           'qrcode-height="' + this.height * qrcodeTransform[3] + '" ',
-          'qrcode-variable="' + this.qrcodeVariable ? this.qrcodeVariable : '' + '" ',
+          'qrcode-variable="' + (this.qrcodeVariable ? this.qrcodeVariable : '') + '" ',
           ' >\n',
           '[qrcode-body]' + '\n',
           '</g>\n',
